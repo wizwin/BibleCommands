@@ -1,0 +1,3 @@
+Clone a disk partition
+
+dd if=/dev/sda2 of=/dev/sdb1 bs=64K conv=noerror,sync status=progress
