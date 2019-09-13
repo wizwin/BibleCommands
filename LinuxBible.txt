@@ -1,3 +1,27 @@
-Clone a disk partition
+-------------------------------------------------------------------------------
+Clone a disk/partition (Copy partition sda2 to sdb1)
+-------------------------------------------------------------------------------
 
 dd if=/dev/sda2 of=/dev/sdb1 bs=64K conv=noerror,sync status=progress
+
+You may replace the partition (block) name with a full block device name (like /dev/sda) to clone an entire disk drive. You may remove status=progress on versions that support this parameter.
+
+-------------------------------------------------------------------------------
+Backup files lesser than 10MB recursively from current directory to Backup.tar.gz
+-------------------------------------------------------------------------------
+
+tar czvf Backup.tar.gz . --exclude-from <(find . -size +10M)
+
+Useful when you need a quick backup to transfer lot of smaller files (like source code) and discard image files.
+
+-------------------------------------------------------------------------------
+Save all commit information of a particular user from a specific branch
+-------------------------------------------------------------------------------
+
+JSON format:
+ssh -p <port> <user@gerrit> gerrit query branch:<branch_name> owner:<owner_name> status:merged --format json > commits.json
+
+Text format:
+ssh -p <port> <user@gerrit> gerrit query branch:<branch_name> owner:<owner_name> status:merged  --format text > commits.txt
+
+-------------------------------------------------------------------------------
