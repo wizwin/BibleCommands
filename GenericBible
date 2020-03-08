@@ -1,0 +1,20 @@
+-------------------------------------------------------------------------------
+ADB (Android Debug) Specific Commands
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+ADB Over Wi-Fi
+-------------------------------------------------------------------------------
+
+Issue the following commands with USB cable attached:
+adb tcpip 5555
+
+This will show your Wireless LAN (wlan0) IP address
+adb shell ip -f inet addr show wlan0
+
+The following command is executed from a machine on the same Wi-Fi network:
+adb connect IP:PORT (Port -> 5555)
+
+After the above steps you can for example say: 
+adb -s IP:PORT logcat -b all
+-------------------------------------------------------------------------------
