@@ -1,0 +1,21 @@
+-------------------------------------------------------------------------------
+Report, Save and Restore Windows drivers (Needs Admin)
+-------------------------------------------------------------------------------
+
+Report
+------
+Driverquery /v /fo table > DriverTable.doc
+
+Save
+----
+dism /online /export-driver /destination:"Full path"
+
+Restore
+-------
+pnputil /add-driver "Full path\*.inf" /subdirs /install /reboot
+
+-------------------------------------------------------------------------------
+Ping a range of IP addresses
+-------------------------------------------------------------------------------
+
+FOR /L %x IN (1,1,254) DO ping -n 1 192.168.1.%x
